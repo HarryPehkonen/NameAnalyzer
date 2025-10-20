@@ -1,0 +1,15 @@
+strength
+string
+strong
+thunder
+thrones
+dragon
+dream
+throne
+athena
+zeus
+prometheus
+hercules
+apollo
+artemis
+poseidon

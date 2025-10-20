@@ -1,0 +1,1038 @@
+{
+  "config": {
+    "input_file": "test_words.txt",
+    "markov_order": 2,
+    "min_word_length": 2,
+    "syllables_enabled": true,
+    "components_enabled": true
+  },
+  "stats": {
+    "total_words": 15,
+    "total_characters": 100,
+    "total_syllables": 31,
+    "avg_word_length": 6.66667,
+    "avg_syllables_per_word": 2.06667,
+    "length_distribution": {
+      "4": 1,
+      "5": 1,
+      "6": 6,
+      "7": 3,
+      "8": 3,
+      "10": 1
+    }
+  },
+  "letter_analysis": {
+    "unigrams": {
+      "a": 6,
+      "c": 1,
+      "d": 4,
+      "e": 13,
+      "g": 4,
+      "h": 7,
+      "i": 3,
+      "l": 3,
+      "m": 3,
+      "n": 9,
+      "o": 9,
+      "p": 3,
+      "r": 11,
+      "s": 9,
+      "t": 10,
+      "u": 4,
+      "z": 1
+    },
+    "bigrams": {
+      "ag": 1,
+      "am": 1,
+      "ap": 1,
+      "ar": 1,
+      "at": 1,
+      "cu": 1,
+      "de": 1,
+      "do": 1,
+      "dr": 2,
+      "ea": 1,
+      "ei": 1,
+      "em": 1,
+      "en": 2,
+      "er": 2,
+      "es": 2,
+      "et": 1,
+      "eu": 2,
+      "go": 1,
+      "gt": 1,
+      "he": 3,
+      "hr": 2,
+      "hu": 1,
+      "id": 1,
+      "in": 1,
+      "is": 1,
+      "le": 1,
+      "ll": 1,
+      "lo": 1,
+      "me": 1,
+      "mi": 1,
+      "na": 1,
+      "nd": 1,
+      "ne": 2,
+      "ng": 3,
+      "ol": 1,
+      "om": 1,
+      "on": 5,
+      "os": 1,
+      "po": 2,
+      "pr": 1,
+      "ra": 1,
+      "rc": 1,
+      "re": 2,
+      "ri": 1,
+      "ro": 4,
+      "rt": 1,
+      "se": 1,
+      "st": 3,
+      "te": 1,
+      "th": 6,
+      "tr": 3,
+      "ul": 1,
+      "un": 1,
+      "us": 2,
+      "ze": 1
+    },
+    "trigrams": {
+      "ago": 1,
+      "apo": 1,
+      "art": 1,
+      "ath": 1,
+      "cul": 1,
+      "der": 1,
+      "don": 1,
+      "dra": 1,
+      "dre": 1,
+      "eam": 1,
+      "eid": 1,
+      "emi": 1,
+      "ena": 1,
+      "eng": 1,
+      "erc": 1,
+      "eth": 1,
+      "eus": 2,
+      "gon": 1,
+      "gth": 1,
+      "hen": 1,
+      "her": 1,
+      "heu": 1,
+      "hro": 2,
+      "hun": 1,
+      "ido": 1,
+      "ing": 1,
+      "les": 1,
+      "llo": 1,
+      "met": 1,
+      "mis": 1,
+      "nde": 1,
+      "nes": 1,
+      "ngt": 1,
+      "oll": 1,
+      "ome": 1,
+      "one": 2,
+      "ong": 1,
+      "ose": 1,
+      "pol": 1,
+      "pos": 1,
+      "pro": 1,
+      "rag": 1,
+      "rcu": 1,
+      "rea": 1,
+      "ren": 1,
+      "rin": 1,
+      "rom": 1,
+      "ron": 3,
+      "rte": 1,
+      "sei": 1,
+      "str": 3,
+      "tem": 1,
+      "the": 2,
+      "thr": 2,
+      "thu": 1,
+      "tre": 1,
+      "tri": 1,
+      "tro": 1,
+      "ule": 1,
+      "und": 1,
+      "zeu": 1
+    },
+    "fourgrams": {
+      "agon": 1,
+      "apol": 1,
+      "arte": 1,
+      "athe": 1,
+      "cule": 1,
+      "drag": 1,
+      "drea": 1,
+      "eido": 1,
+      "emis": 1,
+      "engt": 1,
+      "ercu": 1,
+      "ethe": 1,
+      "hena": 1,
+      "herc": 1,
+      "heus": 1,
+      "hron": 2,
+      "hund": 1,
+      "idon": 1,
+      "meth": 1,
+      "nder": 1,
+      "ngth": 1,
+      "ollo": 1,
+      "omet": 1,
+      "ones": 1,
+      "osei": 1,
+      "poll": 1,
+      "pose": 1,
+      "prom": 1,
+      "rago": 1,
+      "rcul": 1,
+      "ream": 1,
+      "reng": 1,
+      "ring": 1,
+      "rome": 1,
+      "rone": 2,
+      "rong": 1,
+      "rtem": 1,
+      "seid": 1,
+      "stre": 1,
+      "stri": 1,
+      "stro": 1,
+      "temi": 1,
+      "then": 1,
+      "theu": 1,
+      "thro": 2,
+      "thun": 1,
+      "tren": 1,
+      "trin": 1,
+      "tron": 1,
+      "ules": 1,
+      "unde": 1,
+      "zeus": 1
+    },
+    "positional_bigrams": {
+      "start": {
+        "ap": 1,
+        "ar": 1,
+        "at": 1,
+        "dr": 2,
+        "he": 1,
+        "po": 1,
+        "pr": 1,
+        "st": 3,
+        "th": 3,
+        "ze": 1
+      },
+      "middle": {
+        "ag": 1,
+        "cu": 1,
+        "de": 1,
+        "do": 1,
+        "ea": 1,
+        "ei": 1,
+        "em": 1,
+        "en": 2,
+        "er": 1,
+        "et": 1,
+        "eu": 2,
+        "go": 1,
+        "gt": 1,
+        "he": 2,
+        "hr": 2,
+        "hu": 1,
+        "id": 1,
+        "in": 1,
+        "le": 1,
+        "ll": 1,
+        "me": 1,
+        "mi": 1,
+        "nd": 1,
+        "ne": 1,
+        "ng": 1,
+        "ol": 1,
+        "om": 1,
+        "on": 3,
+        "os": 1,
+        "po": 1,
+        "ra": 1,
+        "rc": 1,
+        "re": 2,
+        "ri": 1,
+        "ro": 4,
+        "rt": 1,
+        "se": 1,
+        "te": 1,
+        "th": 2,
+        "tr": 3,
+        "ul": 1,
+        "un": 1
+      },
+      "end": {
+        "am": 1,
+        "er": 1,
+        "es": 2,
+        "is": 1,
+        "lo": 1,
+        "na": 1,
+        "ne": 1,
+        "ng": 2,
+        "on": 2,
+        "th": 1,
+        "us": 2
+      }
+    },
+    "positional_trigrams": {
+      "start": {
+        "apo": 1,
+        "art": 1,
+        "ath": 1,
+        "dra": 1,
+        "dre": 1,
+        "her": 1,
+        "pos": 1,
+        "pro": 1,
+        "str": 3,
+        "thr": 2,
+        "thu": 1,
+        "zeu": 1
+      },
+      "middle": {
+        "ago": 1,
+        "cul": 1,
+        "eid": 1,
+        "emi": 1,
+        "eng": 1,
+        "erc": 1,
+        "eth": 1,
+        "hen": 1,
+        "heu": 1,
+        "hro": 2,
+        "hun": 1,
+        "ido": 1,
+        "met": 1,
+        "nde": 1,
+        "ngt": 1,
+        "oll": 1,
+        "ome": 1,
+        "one": 1,
+        "ose": 1,
+        "pol": 1,
+        "rag": 1,
+        "rcu": 1,
+        "rea": 1,
+        "ren": 1,
+        "rin": 1,
+        "rom": 1,
+        "ron": 3,
+        "rte": 1,
+        "sei": 1,
+        "tem": 1,
+        "the": 2,
+        "tre": 1,
+        "tri": 1,
+        "tro": 1,
+        "ule": 1,
+        "und": 1
+      },
+      "end": {
+        "der": 1,
+        "don": 1,
+        "eam": 1,
+        "ena": 1,
+        "eus": 2,
+        "gon": 1,
+        "gth": 1,
+        "ing": 1,
+        "les": 1,
+        "llo": 1,
+        "mis": 1,
+        "nes": 1,
+        "one": 1,
+        "ong": 1
+      }
+    },
+    "markov_chains": {
+      "order_1": {
+        "^": {
+          "a": 3,
+          "d": 2,
+          "h": 1,
+          "p": 2,
+          "s": 3,
+          "t": 3,
+          "z": 1
+        },
+        "a": {
+          "$": 1,
+          "g": 1,
+          "m": 1,
+          "p": 1,
+          "r": 1,
+          "t": 1
+        },
+        "c": {
+          "u": 1
+        },
+        "d": {
+          "e": 1,
+          "o": 1,
+          "r": 2
+        },
+        "e": {
+          "$": 1,
+          "a": 1,
+          "i": 1,
+          "m": 1,
+          "n": 2,
+          "r": 2,
+          "s": 2,
+          "t": 1,
+          "u": 2
+        },
+        "g": {
+          "$": 2,
+          "o": 1,
+          "t": 1
+        },
+        "h": {
+          "$": 1,
+          "e": 3,
+          "r": 2,
+          "u": 1
+        },
+        "i": {
+          "d": 1,
+          "n": 1,
+          "s": 1
+        },
+        "l": {
+          "e": 1,
+          "l": 1,
+          "o": 1
+        },
+        "m": {
+          "$": 1,
+          "e": 1,
+          "i": 1
+        },
+        "n": {
+          "$": 2,
+          "a": 1,
+          "d": 1,
+          "e": 2,
+          "g": 3
+        },
+        "o": {
+          "$": 1,
+          "l": 1,
+          "m": 1,
+          "n": 5,
+          "s": 1
+        },
+        "p": {
+          "o": 2,
+          "r": 1
+        },
+        "r": {
+          "$": 1,
+          "a": 1,
+          "c": 1,
+          "e": 2,
+          "i": 1,
+          "o": 4,
+          "t": 1
+        },
+        "s": {
+          "$": 5,
+          "e": 1,
+          "t": 3
+        },
+        "t": {
+          "e": 1,
+          "h": 6,
+          "r": 3
+        },
+        "u": {
+          "l": 1,
+          "n": 1,
+          "s": 2
+        },
+        "z": {
+          "e": 1
+        }
+      },
+      "order_2": {
+        "^^": {
+          "a": 3,
+          "d": 2,
+          "h": 1,
+          "p": 2,
+          "s": 3,
+          "t": 3,
+          "z": 1
+        },
+        "^a": {
+          "p": 1,
+          "r": 1,
+          "t": 1
+        },
+        "^d": {
+          "r": 2
+        },
+        "^h": {
+          "e": 1
+        },
+        "^p": {
+          "o": 1,
+          "r": 1
+        },
+        "^s": {
+          "t": 3
+        },
+        "^t": {
+          "h": 3
+        },
+        "^z": {
+          "e": 1
+        },
+        "ag": {
+          "o": 1
+        },
+        "am": {
+          "$": 1
+        },
+        "ap": {
+          "o": 1
+        },
+        "ar": {
+          "t": 1
+        },
+        "at": {
+          "h": 1
+        },
+        "cu": {
+          "l": 1
+        },
+        "de": {
+          "r": 1
+        },
+        "do": {
+          "n": 1
+        },
+        "dr": {
+          "a": 1,
+          "e": 1
+        },
+        "ea": {
+          "m": 1
+        },
+        "ei": {
+          "d": 1
+        },
+        "em": {
+          "i": 1
+        },
+        "en": {
+          "a": 1,
+          "g": 1
+        },
+        "er": {
+          "$": 1,
+          "c": 1
+        },
+        "es": {
+          "$": 2
+        },
+        "et": {
+          "h": 1
+        },
+        "eu": {
+          "s": 2
+        },
+        "go": {
+          "n": 1
+        },
+        "gt": {
+          "h": 1
+        },
+        "he": {
+          "n": 1,
+          "r": 1,
+          "u": 1
+        },
+        "hr": {
+          "o": 2
+        },
+        "hu": {
+          "n": 1
+        },
+        "id": {
+          "o": 1
+        },
+        "in": {
+          "g": 1
+        },
+        "is": {
+          "$": 1
+        },
+        "le": {
+          "s": 1
+        },
+        "ll": {
+          "o": 1
+        },
+        "lo": {
+          "$": 1
+        },
+        "me": {
+          "t": 1
+        },
+        "mi": {
+          "s": 1
+        },
+        "na": {
+          "$": 1
+        },
+        "nd": {
+          "e": 1
+        },
+        "ne": {
+          "$": 1,
+          "s": 1
+        },
+        "ng": {
+          "$": 2,
+          "t": 1
+        },
+        "ol": {
+          "l": 1
+        },
+        "om": {
+          "e": 1
+        },
+        "on": {
+          "$": 2,
+          "e": 2,
+          "g": 1
+        },
+        "os": {
+          "e": 1
+        },
+        "po": {
+          "l": 1,
+          "s": 1
+        },
+        "pr": {
+          "o": 1
+        },
+        "ra": {
+          "g": 1
+        },
+        "rc": {
+          "u": 1
+        },
+        "re": {
+          "a": 1,
+          "n": 1
+        },
+        "ri": {
+          "n": 1
+        },
+        "ro": {
+          "m": 1,
+          "n": 3
+        },
+        "rt": {
+          "e": 1
+        },
+        "se": {
+          "i": 1
+        },
+        "st": {
+          "r": 3
+        },
+        "te": {
+          "m": 1
+        },
+        "th": {
+          "$": 1,
+          "e": 2,
+          "r": 2,
+          "u": 1
+        },
+        "tr": {
+          "e": 1,
+          "i": 1,
+          "o": 1
+        },
+        "ul": {
+          "e": 1
+        },
+        "un": {
+          "d": 1
+        },
+        "us": {
+          "$": 2
+        },
+        "ze": {
+          "u": 1
+        }
+      }
+    }
+  },
+  "syllable_analysis": {
+    "all_syllables": ["strength", "string", "strong", "thun", "der", "thro", "nes", "dra", "gon", "dream", "ne", "at", "he", "na", "zeus", "pro", "met", "heus", "her", "cu", "les", "a", "pol", "lo", "ar", "te", "mis", "po", "sei", "don"],
+    "syllable_frequencies": {
+      "a": 1,
+      "ar": 1,
+      "at": 1,
+      "cu": 1,
+      "der": 1,
+      "don": 1,
+      "dra": 1,
+      "dream": 1,
+      "gon": 1,
+      "he": 1,
+      "her": 1,
+      "heus": 1,
+      "les": 1,
+      "lo": 1,
+      "met": 1,
+      "mis": 1,
+      "na": 1,
+      "ne": 1,
+      "nes": 1,
+      "po": 1,
+      "pol": 1,
+      "pro": 1,
+      "sei": 1,
+      "strength": 1,
+      "string": 1,
+      "strong": 1,
+      "te": 1,
+      "thro": 2,
+      "thun": 1,
+      "zeus": 1
+    },
+    "positional_syllables": {
+      "start": {
+        "a": 1,
+        "ar": 1,
+        "at": 1,
+        "dra": 1,
+        "dream": 1,
+        "her": 1,
+        "po": 1,
+        "pro": 1,
+        "strength": 1,
+        "string": 1,
+        "strong": 1,
+        "thro": 2,
+        "thun": 1,
+        "zeus": 1
+      },
+      "middle": {
+        "cu": 1,
+        "he": 1,
+        "met": 1,
+        "pol": 1,
+        "sei": 1,
+        "te": 1
+      },
+      "end": {
+        "der": 1,
+        "don": 1,
+        "gon": 1,
+        "heus": 1,
+        "les": 1,
+        "lo": 1,
+        "mis": 1,
+        "na": 1,
+        "ne": 1,
+        "nes": 1
+      }
+    },
+    "syllable_markov": {
+      "order_1": {
+        "a": {
+          "pol": 1
+        },
+        "ar": {
+          "te": 1
+        },
+        "at": {
+          "he": 1
+        },
+        "cu": {
+          "les": 1
+        },
+        "der": {
+          "thro": 1
+        },
+        "dra": {
+          "gon": 1
+        },
+        "dream": {
+          "thro": 1
+        },
+        "gon": {
+          "dream": 1
+        },
+        "he": {
+          "na": 1
+        },
+        "her": {
+          "cu": 1
+        },
+        "heus": {
+          "her": 1
+        },
+        "les": {
+          "a": 1
+        },
+        "lo": {
+          "ar": 1
+        },
+        "met": {
+          "heus": 1
+        },
+        "mis": {
+          "po": 1
+        },
+        "na": {
+          "zeus": 1
+        },
+        "ne": {
+          "at": 1
+        },
+        "nes": {
+          "dra": 1
+        },
+        "po": {
+          "sei": 1
+        },
+        "pol": {
+          "lo": 1
+        },
+        "pro": {
+          "met": 1
+        },
+        "sei": {
+          "don": 1
+        },
+        "strength": {
+          "string": 1
+        },
+        "string": {
+          "strong": 1
+        },
+        "strong": {
+          "thun": 1
+        },
+        "te": {
+          "mis": 1
+        },
+        "thro": {
+          "ne": 1,
+          "nes": 1
+        },
+        "thun": {
+          "der": 1
+        },
+        "zeus": {
+          "pro": 1
+        }
+      },
+      "order_2": {
+        "ar|te": {
+          "mis": 1
+        },
+        "at|he": {
+          "na": 1
+        },
+        "a|pol": {
+          "lo": 1
+        },
+        "cu|les": {
+          "a": 1
+        },
+        "der|thro": {
+          "nes": 1
+        },
+        "dra|gon": {
+          "dream": 1
+        },
+        "dream|thro": {
+          "ne": 1
+        },
+        "gon|dream": {
+          "thro": 1
+        },
+        "her|cu": {
+          "les": 1
+        },
+        "heus|her": {
+          "cu": 1
+        },
+        "he|na": {
+          "zeus": 1
+        },
+        "les|a": {
+          "pol": 1
+        },
+        "lo|ar": {
+          "te": 1
+        },
+        "met|heus": {
+          "her": 1
+        },
+        "mis|po": {
+          "sei": 1
+        },
+        "na|zeus": {
+          "pro": 1
+        },
+        "nes|dra": {
+          "gon": 1
+        },
+        "ne|at": {
+          "he": 1
+        },
+        "pol|lo": {
+          "ar": 1
+        },
+        "po|sei": {
+          "don": 1
+        },
+        "pro|met": {
+          "heus": 1
+        },
+        "strength|string": {
+          "strong": 1
+        },
+        "string|strong": {
+          "thun": 1
+        },
+        "strong|thun": {
+          "der": 1
+        },
+        "te|mis": {
+          "po": 1
+        },
+        "thro|ne": {
+          "at": 1
+        },
+        "thro|nes": {
+          "dra": 1
+        },
+        "thun|der": {
+          "thro": 1
+        },
+        "zeus|pro": {
+          "met": 1
+        }
+      }
+    }
+  },
+  "component_analysis": {
+    "frequencies": {
+      "onsets": {
+        "": 3,
+        "c": 1,
+        "d": 2,
+        "dr": 2,
+        "g": 1,
+        "h": 3,
+        "l": 2,
+        "m": 2,
+        "n": 3,
+        "p": 2,
+        "pr": 1,
+        "s": 1,
+        "str": 3,
+        "t": 1,
+        "th": 1,
+        "thr": 2,
+        "z": 1
+      },
+      "nuclei": {
+        "a": 5,
+        "e": 9,
+        "ea": 1,
+        "ei": 1,
+        "eu": 2,
+        "i": 2,
+        "o": 9,
+        "u": 2
+      },
+      "codas": {
+        "": 13,
+        "l": 1,
+        "m": 1,
+        "n": 3,
+        "ng": 2,
+        "ngth": 1,
+        "r": 3,
+        "s": 5,
+        "t": 2
+      }
+    },
+    "positional_onsets": {
+      "start": {
+        "": 3,
+        "dr": 2,
+        "h": 1,
+        "p": 1,
+        "pr": 1,
+        "str": 3,
+        "th": 1,
+        "thr": 2,
+        "z": 1
+      },
+      "middle": {
+        "c": 1,
+        "h": 1,
+        "m": 1,
+        "p": 1,
+        "s": 1,
+        "t": 1
+      },
+      "end": {
+        "d": 2,
+        "g": 1,
+        "h": 1,
+        "l": 2,
+        "m": 1,
+        "n": 3
+      }
+    },
+    "positional_codas": {
+      "start": {
+        "": 6,
+        "m": 1,
+        "n": 1,
+        "ng": 2,
+        "ngth": 1,
+        "r": 2,
+        "s": 1,
+        "t": 1
+      },
+      "middle": {
+        "": 4,
+        "l": 1,
+        "t": 1
+      },
+      "end": {
+        "": 3,
+        "n": 2,
+        "r": 1,
+        "s": 4
+      }
+    }
+  }
+}
