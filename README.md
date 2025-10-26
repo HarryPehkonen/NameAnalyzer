@@ -2,6 +2,8 @@
 
 A C++20 tool for analyzing word patterns to extract statistical data for name generation. NameAnalyzer processes word lists to discover letter sequences, syllable structures, and phonetic patterns that can be used by NameGenerator to create pronounceable, authentic-sounding names.
 
+**Companion Tool**: [NameGenerator](https://github.com/HarryPehkonen/NameGenerator) - Uses the JSON profiles from NameAnalyzer to generate new names.
+
 ## Purpose
 
 Simple consonant-vowel patterns (like C-V-C-V) often produce unpronounceable results. NameAnalyzer takes a data-driven approach by analyzing real words to extract:
