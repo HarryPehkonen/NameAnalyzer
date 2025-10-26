@@ -25,6 +25,13 @@ std::vector<std::string> read_words(std::string_view filename, int min_length) {
     std::string line;
 
     while (std::getline(file, line)) {
+
+	// Remove any comments
+	auto comment_pos = line.find('#');
+	if (comment_pos != std::string::npos) {
+	    line.erase(comment_pos);
+	}
+
         // Remove whitespace
         line.erase(std::remove_if(line.begin(), line.end(), ::isspace), line.end());
 
