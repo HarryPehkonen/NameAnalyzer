@@ -43,6 +43,27 @@ else()
     message(STATUS "Using locally installed JSOM")
 endif()
 
+# utf8proc dependency - try to find locally first, then fetch if needed
+find_package(utf8proc QUIET)
+
+if(NOT utf8proc_FOUND)
+    message(STATUS "utf8proc not found locally, fetching from GitHub...")
+    if(NOT FetchContent)
+        include(FetchContent)
+    endif()
+
+    FetchContent_Declare(
+        utf8proc
+        GIT_REPOSITORY https://github.com/JuliaStrings/utf8proc.git
+        GIT_TAG v2.10.0
+        GIT_SHALLOW TRUE
+    )
+
+    FetchContent_MakeAvailable(utf8proc)
+else()
+    message(STATUS "Using locally installed utf8proc")
+endif()
+
 # Source files
 set(SOURCES
     src/main.cpp
@@ -75,8 +96,8 @@ target_include_directories(nameanalyzer PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-# Link JSOM library
-target_link_libraries(nameanalyzer PRIVATE jsom_lib)
+# Link libraries
+target_link_libraries(nameanalyzer PRIVATE jsom_lib utf8proc)
 
 # Compiler warnings
 if(MSVC)

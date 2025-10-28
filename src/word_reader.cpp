@@ -3,16 +3,27 @@
 #include <stdexcept>
 #include <algorithm>
 #include <cctype>
+#include <utf8proc.h>
 
 namespace nameanalyzer {
 
 std::string to_lowercase(std::string_view str) {
-    std::string result;
-    result.reserve(str.size());
-    for (char c : str) {
-        result.push_back(std::tolower(static_cast<unsigned char>(c)));
+    // Use utf8proc for proper Unicode case folding
+    utf8proc_uint8_t* result = nullptr;
+    utf8proc_ssize_t result_size = utf8proc_map(
+        reinterpret_cast<const utf8proc_uint8_t*>(str.data()),
+        static_cast<utf8proc_ssize_t>(str.size()),
+        &result,
+        static_cast<utf8proc_option_t>(UTF8PROC_NULLTERM | UTF8PROC_STABLE | UTF8PROC_COMPOSE | UTF8PROC_CASEFOLD)
+    );
+
+    if (result_size < 0 || !result) {
+        throw std::runtime_error("UTF-8 case conversion failed for: " + std::string(str));
     }
-    return result;
+
+    std::string output(reinterpret_cast<const char*>(result), static_cast<size_t>(result_size));
+    free(result);  // utf8proc uses malloc
+    return output;
 }
 
 std::vector<std::string> read_words(std::string_view filename, int min_length) {

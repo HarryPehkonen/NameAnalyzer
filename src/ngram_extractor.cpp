@@ -1,41 +1,89 @@
 #include "ngram_extractor.hpp"
 #include "markov_builder.hpp"
 #include <string_view>
+#include <utf8proc.h>
+#include <vector>
 
 namespace nameanalyzer {
 
+// Helper to get UTF-8 codepoint count and byte positions
+struct Utf8Info {
+    std::vector<std::size_t> byte_positions;  // byte_positions[i] = byte offset of i-th codepoint
+    std::size_t num_codepoints;
+};
+
+Utf8Info analyze_utf8(std::string_view str) {
+    Utf8Info info;
+    info.byte_positions.push_back(0);
+
+    std::size_t byte_pos = 0;
+    while (byte_pos < str.size()) {
+        utf8proc_int32_t codepoint;
+        utf8proc_ssize_t bytes_read = utf8proc_iterate(
+            reinterpret_cast<const utf8proc_uint8_t*>(str.data() + byte_pos),
+            static_cast<utf8proc_ssize_t>(str.size() - byte_pos),
+            &codepoint
+        );
+
+        if (bytes_read <= 0) {
+            byte_pos++;  // Skip invalid byte
+            continue;
+        }
+
+        byte_pos += static_cast<std::size_t>(bytes_read);
+        info.byte_positions.push_back(byte_pos);
+    }
+
+    info.num_codepoints = info.byte_positions.size() - 1;
+    return info;
+}
+
 void extract_ngrams(std::string_view word, int n, FrequencyMap& ngrams) {
-    if (static_cast<int>(word.length()) < n) {
+    Utf8Info utf8_info = analyze_utf8(word);
+
+    if (static_cast<int>(utf8_info.num_codepoints) < n) {
         return;
     }
 
-    for (std::size_t i = 0; i <= word.length() - n; ++i) {
-        std::string ngram(word.substr(i, n));
+    // Extract n-grams using codepoint positions
+    for (std::size_t i = 0; i <= utf8_info.num_codepoints - static_cast<std::size_t>(n); ++i) {
+        std::size_t start_byte = utf8_info.byte_positions[i];
+        std::size_t end_byte = utf8_info.byte_positions[i + n];
+        std::string ngram(word.substr(start_byte, end_byte - start_byte));
         ngrams[ngram]++;
     }
 }
 
 void extract_positional_ngrams(std::string_view word, int n, PositionalFrequencies& pos_freq) {
-    if (static_cast<int>(word.length()) < n) {
+    Utf8Info utf8_info = analyze_utf8(word);
+
+    if (static_cast<int>(utf8_info.num_codepoints) < n) {
         return;
     }
 
     // Start: first n-gram
-    if (word.length() >= static_cast<std::size_t>(n)) {
-        std::string start_ngram(word.substr(0, n));
+    {
+        std::size_t start_byte = utf8_info.byte_positions[0];
+        std::size_t end_byte = utf8_info.byte_positions[n];
+        std::string start_ngram(word.substr(start_byte, end_byte - start_byte));
         pos_freq.start[start_ngram]++;
     }
 
     // End: last n-gram
-    if (word.length() >= static_cast<std::size_t>(n)) {
-        std::string end_ngram(word.substr(word.length() - n, n));
+    {
+        std::size_t start_idx = utf8_info.num_codepoints - static_cast<std::size_t>(n);
+        std::size_t start_byte = utf8_info.byte_positions[start_idx];
+        std::size_t end_byte = utf8_info.byte_positions[utf8_info.num_codepoints];
+        std::string end_ngram(word.substr(start_byte, end_byte - start_byte));
         pos_freq.end[end_ngram]++;
     }
 
     // Middle: all n-grams except first and last
-    if (word.length() > static_cast<std::size_t>(n)) {
-        for (std::size_t i = 1; i < word.length() - n; ++i) {
-            std::string mid_ngram(word.substr(i, n));
+    if (utf8_info.num_codepoints > static_cast<std::size_t>(n)) {
+        for (std::size_t i = 1; i < utf8_info.num_codepoints - static_cast<std::size_t>(n); ++i) {
+            std::size_t start_byte = utf8_info.byte_positions[i];
+            std::size_t end_byte = utf8_info.byte_positions[i + n];
+            std::string mid_ngram(word.substr(start_byte, end_byte - start_byte));
             pos_freq.middle[mid_ngram]++;
         }
     }
