@@ -12,15 +12,12 @@ void print_usage(std::string_view program_name) {
               << "  <input_file>              Input text file (one word per line, UTF-8)\n"
               << "  -o, --output <file>       Output JSON file for statistics\n\n"
               << "Options:\n"
-              << "  --markov-order <1-3>      Markov chain order (default: 2)\n"
-              << "  --enable-syllables        Enable syllable-level analysis\n"
-              << "  --enable-components       Enable onset/nucleus/coda extraction\n"
               << "  --min-length <n>          Minimum word length to analyze (default: 2)\n"
               << "  -v, --verbose             Verbose output\n"
               << "  -h, --help                Show this help message\n\n"
               << "Examples:\n"
               << "  " << program_name << " words.txt -o output.json\n"
-              << "  " << program_name << " greek_names.txt -o greek.json --markov-order 3 --enable-syllables\n";
+              << "  " << program_name << " greek_names.txt -o greek.json\n";
 }
 
 std::optional<Config> parse_arguments(int argc, char* argv[]) {
@@ -47,29 +44,6 @@ std::optional<Config> parse_arguments(int argc, char* argv[]) {
             }
             config.output_file = argv[++i];
             has_output = true;
-        }
-        else if (arg == "--markov-order") {
-            if (i + 1 >= argc) {
-                std::cerr << "Error: --markov-order requires an argument\n";
-                return std::nullopt;
-            }
-            try {
-                int order = std::stoi(argv[++i]);
-                if (order < 1 || order > 3) {
-                    std::cerr << "Error: Markov order must be between 1 and 3\n";
-                    return std::nullopt;
-                }
-                config.markov_order = order;
-            } catch (...) {
-                std::cerr << "Error: Invalid markov order value\n";
-                return std::nullopt;
-            }
-        }
-        else if (arg == "--enable-syllables") {
-            config.enable_syllables = true;
-        }
-        else if (arg == "--enable-components") {
-            config.enable_components = true;
         }
         else if (arg == "--min-length") {
             if (i + 1 >= argc) {

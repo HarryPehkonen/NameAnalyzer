@@ -11,9 +11,9 @@ namespace nameanalyzer {
 struct Config {
     std::string input_file;
     std::string output_file;
-    int markov_order = 2;           // Default to 2nd order
-    bool enable_syllables = false;
-    bool enable_components = false;
+    int markov_order = 3;           // Default to 2nd order
+    bool enable_syllables = true;
+    bool enable_components = true;
     int min_word_length = 2;        // Ignore very short words
     bool verbose = false;
 };
