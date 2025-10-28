@@ -6,7 +6,42 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# No external dependencies needed - JSON output is written manually
+# JSOM dependency - try to find locally first, then fetch if needed
+find_package(jsom QUIET)
+
+if(NOT jsom_FOUND)
+    message(STATUS "JSOM not found locally, fetching from GitHub...")
+    include(FetchContent)
+
+    FetchContent_Declare(
+        JSOM
+        GIT_REPOSITORY https://github.com/HarryPehkonen/JSOM.git
+        GIT_TAG main
+        GIT_SHALLOW TRUE
+    )
+
+    FetchContent_GetProperties(JSOM)
+    if(NOT jsom_POPULATED)
+        FetchContent_Populate(JSOM)
+
+        # Build minimal JSOM library (avoids benchmarks/tests)
+        add_library(jsom_lib
+            ${jsom_SOURCE_DIR}/src/json_document_pointer.cpp
+            ${jsom_SOURCE_DIR}/src/json_document_formatting.cpp
+        )
+
+        target_include_directories(jsom_lib PUBLIC
+            ${jsom_SOURCE_DIR}/include
+        )
+
+        set_target_properties(jsom_lib PROPERTIES
+            CXX_STANDARD 17
+            CXX_STANDARD_REQUIRED ON
+        )
+    endif()
+else()
+    message(STATUS "Using locally installed JSOM")
+endif()
 
 # Source files
 set(SOURCES
@@ -40,7 +75,8 @@ target_include_directories(nameanalyzer PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-# No external libraries to link
+# Link JSOM library
+target_link_libraries(nameanalyzer PRIVATE jsom_lib)
 
 # Compiler warnings
 if(MSVC)
