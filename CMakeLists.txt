@@ -20,25 +20,7 @@ if(NOT jsom_FOUND)
         GIT_SHALLOW TRUE
     )
 
-    FetchContent_GetProperties(JSOM)
-    if(NOT jsom_POPULATED)
-        FetchContent_Populate(JSOM)
-
-        # Build minimal JSOM library (avoids benchmarks/tests)
-        add_library(jsom_lib
-            ${jsom_SOURCE_DIR}/src/json_document_pointer.cpp
-            ${jsom_SOURCE_DIR}/src/json_document_formatting.cpp
-        )
-
-        target_include_directories(jsom_lib PUBLIC
-            ${jsom_SOURCE_DIR}/include
-        )
-
-        set_target_properties(jsom_lib PROPERTIES
-            CXX_STANDARD 17
-            CXX_STANDARD_REQUIRED ON
-        )
-    endif()
+    FetchContent_MakeAvailable(JSOM)
 else()
     message(STATUS "Using locally installed JSOM")
 endif()
@@ -97,7 +79,7 @@ target_include_directories(nameanalyzer PRIVATE
 )
 
 # Link libraries
-target_link_libraries(nameanalyzer PRIVATE jsom_lib utf8proc)
+target_link_libraries(nameanalyzer PRIVATE JSOM::jsom utf8proc)
 
 # Compiler warnings
 if(MSVC)
