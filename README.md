@@ -17,14 +17,14 @@ The output is a JSON file containing statistical patterns that NameGenerator can
 
 ## Features
 
-- ✅ Zero external dependencies - pure C++20
+- ✅ Automatic dependency management (JSOM, utf8proc via CMake FetchContent)
+- ✅ Full Unicode/UTF-8 support with proper case folding
 - ✅ Multi-level analysis (letters, syllables, components)
 - ✅ Tunable Markov chain order (1st, 2nd, or 3rd order)
 - ✅ Position-aware pattern extraction (start/middle/end of words)
 - ✅ Heuristic syllable detection (~85-90% accuracy for English)
 - ✅ Component-level breakdown (onset-nucleus-coda)
-- ✅ Clean JSON output with full statistics
-- ✅ UTF-8 text file input support
+- ✅ RFC-compliant JSON output
 
 ## Building
 
