@@ -1,9 +1,11 @@
-#include "word_reader.hpp"
-#include <fstream>
-#include <stdexcept>
 #include <algorithm>
 #include <cctype>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <stdexcept>
 #include <utf8proc.h>
+#include "word_reader.hpp"
 
 namespace nameanalyzer {
 
@@ -34,6 +36,7 @@ std::vector<std::string> read_words(std::string_view filename, int min_length) {
 
     std::vector<std::string> words;
     std::string line;
+    std::string blacklist_chars = "(),.!@$%^&*-_=+[{]}/?<>";
 
     while (std::getline(file, line)) {
 
@@ -43,20 +46,24 @@ std::vector<std::string> read_words(std::string_view filename, int min_length) {
 	    line.erase(comment_pos);
 	}
 
-        // Remove whitespace
-        line.erase(std::remove_if(line.begin(), line.end(), ::isspace), line.end());
+	// split by whitespace
+	std::istringstream iss(to_lowercase(line));
+	std::string word;
+	while (iss >> word) {
 
-        if (line.empty()) {
-            continue;
-        }
+	    // ensure minimum length
+	    if (static_cast<int>(word.length()) < min_length) {
+		continue;
+	    }
 
-        // Convert to lowercase
-        std::string word = to_lowercase(line);
+	    // ensure no bad characters
+	    if (word.find_first_of(blacklist_chars) != std::string::npos) {
+		std::cout << "Skipping " << word << "\n";
+		continue;
+	    }
 
-        // Filter by minimum length
-        if (static_cast<int>(word.length()) >= min_length) {
-            words.push_back(std::move(word));
-        }
+	    words.push_back(std::move(word));
+	}
     }
 
     if (words.empty()) {
